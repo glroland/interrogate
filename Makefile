@@ -2,4 +2,4 @@ install:
 	pip install -r requirements.txt
 
 run:
-	cd src && streamlit run app.py
+	. deploy/local-env && cd src && streamlit run app.py

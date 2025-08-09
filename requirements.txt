@@ -1,3 +1,6 @@
 pytest
 pylint
+watchdog
 streamlit
+streamlit_oauth
+requests

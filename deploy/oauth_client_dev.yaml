@@ -1,0 +1,9 @@
+apiVersion: oauth.openshift.io/v1
+kind: OAuthClient
+metadata:
+  name: interrogate
+redirectURIs:
+- http://localhost:8501/component/streamlit_oauth.authorize_button
+secret: pqsbTGVH7Qv1afs2
+grantMethod: auto #prompt
+accessTokenInactivityTimeoutSeconds: 600
