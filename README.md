@@ -6,6 +6,7 @@ LLama Stack example application that enables users to upload their documents for
 
 Vector DB - Holds document metadata and chunks for semantic search
 Object Store - Holds original documents
+OAuth Provider - Authentication and authorization services
 
 ## Content Structure
 
