@@ -12,7 +12,7 @@ logging.basicConfig(level=logging.DEBUG,
         logging.StreamHandler()
     ])
 
-st.title('Interrogate Application')
+st.title('Interrogate My Docs')
 
 authenticate = Authenticate()
 authenticate.render()
