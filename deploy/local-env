@@ -7,3 +7,5 @@ export REVOKE_TOKEN_URL="https://oauth-openshift.apps.ocp.home.glroland.com/oaut
 export REDIRECT_URI="http://localhost:8501/component/streamlit_oauth.authorize_button"
 export SCOPE="user:info"
 export USERINFO_URL="https://api.ocp.home.glroland.com:6443/apis/user.openshift.io/v1/users/~"
+export OBJECT_URL="https://eclipse.home.glroland.com:9000"
+export FILE_BUCKET="interrogate"

@@ -4,3 +4,4 @@ watchdog
 streamlit
 streamlit_oauth
 requests
+boto3
