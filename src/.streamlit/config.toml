@@ -1,0 +1,6 @@
+[server]
+cookieSecret = "my-super-secure-cookie-secret"
+maxUploadSize = 400
+
+[browser]
+gatherUsageStats = false

@@ -52,5 +52,13 @@ if authenticate.is_logged_in():
                 file_checkboxes[file] = checkbox
             st.write(f"{len(files)} files found for user.")
 
+        # Accept new files
+        st.subheader("Upload a new file...")
+        uploaded_files = st.file_uploader("PDFs and raw text formats", accept_multiple_files=True)
+        for uploaded_file in uploaded_files:
+            bytes_data = uploaded_file.read()
+            st.write("filename:", uploaded_file.name)
+            st.write(bytes_data)
+
     # Main UI View
     chat_input = st.chat_input("How can I help you with the selected files?")
