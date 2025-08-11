@@ -108,33 +108,29 @@ class Authenticate:
         logger.info("Username of authenticated user: %s", username)
         return username
 
-    def render(self):
-        """ Renders the UI components necessary for authentication.
+    def verify_authenticate_response(self, result):
+        """ Authenticates a response from the oauth authenticate button.
+        
+            result - authentication action response
         """
-        if not self.is_logged_in():
-            result = self.oauth2.authorize_button("Login via OpenShift",
-                                                  self.REDIRECT_URI,
-                                                  self.SCOPE)
-            if result and 'token' in result:
-                logger.debug("Authentication successful!  %s", result)
+        if result and 'token' in result:
+            logger.debug("Authentication successful!  %s", result)
 
-                # Gather all the user info before persisting the token info (no partials)
-                full_token = result.get('token')
-                token = full_token["access_token"]
-                username = self.retrieve_user_info(token)
+            # Gather all the user info before persisting the token info (no partials)
+            full_token = result.get('token')
+            token = full_token["access_token"]
+            username = self.retrieve_user_info(token)
 
-                # save authentication info in session
-                st.session_state[SessionState.TOKEN] = full_token
-                st.session_state[SessionState.USERNAME] = username
-                st.rerun()
-        else:
-            # Refresh Token
-            full_token = st.session_state[SessionState.TOKEN]
-            full_token = self.oauth2.refresh_token(full_token)
+            # save authentication info in session
             st.session_state[SessionState.TOKEN] = full_token
+            st.session_state[SessionState.USERNAME] = username
 
-            # Display Logout Button
-            if st.button("Logout"):
-                del st.session_state[SessionState.TOKEN]
-                del st.session_state[SessionState.USERNAME]
-                st.rerun()
+            return True
+        else:
+            return False
+
+    def logout(self):
+        """ Logs the current user out of the system. """
+        del st.session_state[SessionState.TOKEN]
+        del st.session_state[SessionState.USERNAME]
+        st.rerun()
