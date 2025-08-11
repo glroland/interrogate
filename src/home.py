@@ -27,5 +27,6 @@ class HomePageView:
             st.write("No files for user.")
         else:
             for file in files:
+                #st.page_link(page="app.py", label=file)
                 st.write(file)
             st.write(f"{len(files)} files found for user.")

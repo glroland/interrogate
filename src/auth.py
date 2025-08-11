@@ -19,12 +19,17 @@ class Authenticate:
     SCOPE = os.environ.get('SCOPE')
     USERINFO_URL = os.environ.get('USERINFO_URL')
 
-    oauth2 = OAuth2Component(CLIENT_ID,
-                             CLIENT_SECRET,
-                             AUTHORIZE_URL,
-                             TOKEN_URL,
-                             REFRESH_TOKEN_URL,
-                             REVOKE_TOKEN_URL)
+    oauth2 = None
+
+    def __init__(self):
+        """ Initialize the component
+        """
+        self.oauth2 = OAuth2Component(self.CLIENT_ID,
+                                      self.CLIENT_SECRET,
+                                      self.AUTHORIZE_URL,
+                                      self.TOKEN_URL,
+                                      self.REFRESH_TOKEN_URL,
+                                      self.REVOKE_TOKEN_URL)
 
     def get_token(self):
         """ Gets the OAuth token associated with the user from the last authentication
